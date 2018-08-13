@@ -5,8 +5,8 @@
 # Recursive encryption and calculate hash sha512 files target folder
 
 #set target folder for  encrypt
-#ENC_FOLER=$1
-ENC_FOLER=/example/path
+#TARGET_FOLDER=$1
+TARGET_FOLDER=/example/path
 # set temp  directory for file list path and temp script
 TMP_DIR=/tmp
 
@@ -108,7 +108,7 @@ FROM_SENDER='encrypted compleate <encrypt-server@example.com>'
 RECIPIENT_KEY=OUR-GPG-KEY
 
 # create list files  for encrypt
-/usr/bin/find $ENC_FOLER > $FILE_NAME
+/usr/bin/find $TARGET_FOLDER > $FILE_NAME
 
 echo "create file  "$FILE_NAME" "
 #set default variable
@@ -130,7 +130,7 @@ done < $FILE_NAME
 
 #create list files name *.sha512 and encrypted their
 # sha512 files
-/usr/bin/find $ENC_FOLER -type f -name '*.sha512'> $FILES_SHA512
+/usr/bin/find $TARGET_FOLDER -type f -name '*.sha512'> $FILES_SHA512
 echo "file sha512 "$FILES_SHA512""
 
 while read LINE
