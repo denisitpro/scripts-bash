@@ -1,6 +1,9 @@
 # encrypt.sh - script recursive encryption using GnuPG and and also calculates checksums sha512
 
-**ATTENTION: this is an alpha version of the script, just after encryption, the ORIGINAL file is DELETED**
+**ВНИМАНИЕ: это альфа версия скрипта. После шифрования, оригинальный файл УДАЛЯЕТСЯ
+ATTENTION: this is an alpha version of the script, after encryption the ORIGINAL file is DELETED**
+
+Для изменения поведения, необходимо закоментировать строку  86 "/usr/bin/rm -f $1"
 To change this, you need to comment out the line - 86 "/usr/bin/rm -f $1"
 
 **Desctiption:
