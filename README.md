@@ -1,4 +1,4 @@
-# encrypt.sh - script recursive encryption using GnuPG and and also calculates checksums sha512
+# gnugp-recursive-file-encryption.sh - script recursive encryption using GnuPG and and also calculates checksums sha512
 
 **RU: ВНИМАНИЕ: это альфа версия скрипта. После шифрования, оригинальный файл УДАЛЯЕТСЯ
 EN: ATTENTION: this is an alpha version of the script, after encryption the ORIGINAL file is DELETED**
