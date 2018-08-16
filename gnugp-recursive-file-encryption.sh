@@ -7,8 +7,25 @@
 #set target folder for  encrypt
 #TARGET_FOLDER=$1
 TARGET_FOLDER=/example/path
+
 # set temp  directory for file list path and temp script
 TMP_DIR=/tmp
+
+#set GnuPG recipient key - SPECIFY YOUR PUBLIC KEY GnuPG
+RECIPIENT_KEY=OUR-GPG-KEY
+
+
+#### SMTP SECTION #########
+# smtp server
+SMTP_SERVER=mail.example.com
+#mail for  report
+MAIL_REPORT=user@example.com
+#sender
+FROM_SENDER='encrypted compleate <encrypt-server@example.com>'
+
+#### end SMTP SECTION #####
+
+
 
 #set file name to save paths to encrypted files
 FILE_NAME=$TMP_DIR/all-$(date +"%Y%m%d-%H%M%S")
@@ -20,6 +37,8 @@ SHA512_SCRIPT=$TMP_DIR/sha512-calc-$(date +"%Y%m%d-%H%M%S").sh
 
 #encrypt script name
 GPG_ENC_SCRIP=$TMP_DIR/gpg-enc-$(date +"%Y%m%d-%H%M%S").sh
+
+
 
 
 #create temp script for  calc sha512
@@ -93,19 +112,6 @@ EOT
 # set encrypte script executabe
 /usr/bin/chmod +x  $GPG_ENC_SCRIP
 
-
-#### SMTP SECTION #########
-# smtp server
-SMTP_SERVER=mail.example.com
-#mail for  report
-MAIL_REPORT=user@example.com
-#sender
-FROM_SENDER='encrypted compleate <encrypt-server@example.com>'
-
-#### end SMTP SECTION #####
-
-#set GnuPG recipient key - SPECIFY YOUR PUBLIC KEY GnuPG
-RECIPIENT_KEY=OUR-GPG-KEY
 
 # create list files  for encrypt
 /usr/bin/find $TARGET_FOLDER > $FILE_NAME
