@@ -3,3 +3,4 @@
 
 example: cert-expired.sh google.com
 
+**ping-v1.shh** - monitring remote host for zabbix-agent
