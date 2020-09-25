@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Author  Denis Larkin
-# version 0.1 alfa
+# version 0.2 beta
 # Recursive encryption and calculate hash sha512 files target folder
 
 #set target folder for  encrypt
@@ -66,7 +66,7 @@ if [ -d "$1" ]; then
 			#  set  default hash
 			HASH_FILE="bad hash"
 			# new calculate  hash
-			HASH_FILE=$(/usr/bin/sha512sum $1 | cut -d ' ' -f 1)
+			HASH_FILE=$(/usr/bin/basha512sum $1 | cut -d ' ' -f 1)
 			# create file sha512  insert hash and   only filename
 			echo ""$HASH_FILE"  "$fname""> $1.sha512
               fi
@@ -127,9 +127,9 @@ do
    i=$(($i + 1))
 
 # calc hash
-    /usr/bin/sh $SHA512_SCRIPT  "${LINE}"
+    /usr/bin/bash $SHA512_SCRIPT  "${LINE}"
 # encrypt
-   /usr/bin/sh $GPG_ENC_SCRIP "${LINE}" "$RECIPIENT_KEY"
+   /usr/bin/bash $GPG_ENC_SCRIP "${LINE}" "$RECIPIENT_KEY"
 done < $FILE_NAME
 
 ###### end encrypt files
@@ -143,7 +143,7 @@ while read LINE
 do
 # encrypt  sha512 files
 #   ./gpg-enc.sh "${LINE}" "$RECIPIENT_KEY"
-   /usr/bin/sh $GPG_ENC_SCRIP "${LINE}" "$RECIPIENT_KEY"
+   /usr/bin/bash $GPG_ENC_SCRIP "${LINE}" "$RECIPIENT_KEY"
 
 done < $FILES_SHA512
 
@@ -157,7 +157,7 @@ echo "list file include "$i" string"
 # send mail use  mailx
 # install mailx for centos 7.5
 # yum -y install mailx
-echo "attach list encrypted files " | /usr/bin/mailx -a $FILE_NAME -s "encrypt compleate" -S smtp=smtp://$SMTP_SERVER -S from="$FROM_SENDER" $MAIL_REPORT
+#echo "attach list encrypted files " | /usr/bin/mailx -a $FILE_NAME -s "encrypt compleate" -S smtp=smtp://$SMTP_SERVER -S from="$FROM_SENDER" $MAIL_REPORT
 
 # remove temp file
 echo "remove temp file "$FILE_NAME""
@@ -171,8 +171,5 @@ echo "remove temp file "$SHA512_SCRIPT""
 echo "remove temp file "$GPG_ENC_SCRIP""
 /usr/bin/rm -f $GPG_ENC_SCRIP
 
-
-echo "send  list encrypted file compleate"
-
-
+#echo "send  list encrypted file compleate"
 ####### END
