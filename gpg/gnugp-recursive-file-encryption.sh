@@ -66,7 +66,7 @@ if [ -d "$1" ]; then
 			#  set  default hash
 			HASH_FILE="bad hash"
 			# new calculate  hash
-			HASH_FILE=$(/usr/bin/basha512sum $1 | cut -d ' ' -f 1)
+			HASH_FILE=$(sha512sum $1 | cut -d ' ' -f 1)
 			# create file sha512  insert hash and   only filename
 			echo ""$HASH_FILE"  "$fname""> $1.sha512
               fi
